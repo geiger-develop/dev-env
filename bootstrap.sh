@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
+# install postgres
+sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+
 echo "Running apt-get update"
 apt-get update
 
-# install postgres
-sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-$ wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+apt-get install -y postgresql postgresql-contrib
 
-apt-get install postgresql postgresql-contrib
+# next setup vagrant as superuser/create db
+sudo -u postgres bash -c "psql -c \"CREATE USER vagrant;\""
+sudo -u postgres bash -c "psql -c \"ALTER USER vagrant SUPERUSER CREATEDB;\""
+sudo -u postgres bash -c "psql -c \"CREATE DATABASE vagrant;\""
 
 # install utilities
 apt-get install -y supervisor git libpq-dev unixodbc unixodbc-dev

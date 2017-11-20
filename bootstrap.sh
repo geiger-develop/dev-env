@@ -18,8 +18,11 @@ sudo -u postgres bash -c "psql -c \"CREATE DATABASE vagrant;\""
 apt-get install -y supervisor git libpq-dev unixodbc unixodbc-dev
 
 # setup virtualenv
-apt-get install -y python-pip python-dev python-virtualenv
+apt-get install -y python-pip python-dev python-virtualenv celery
 
 # install node.js and npm
 apt-get install -y nodejs
 apt-get install -y npm
+
+# install redis
+apt-get install -y redis-server

@@ -10,9 +10,9 @@ apt-get update
 apt-get install -y postgresql postgresql-contrib
 
 # next setup vagrant as superuser/create db
-sudo -u postgres bash -c "psql -c \"CREATE USER vagrant;\""
-sudo -u postgres bash -c "psql -c \"ALTER USER vagrant SUPERUSER CREATEDB;\""
-sudo -u postgres bash -c "psql -c \"CREATE DATABASE vagrant;\""
+sudo -u postgres bash -c "psql -c \"CREATE USER ubuntu;\""
+sudo -u postgres bash -c "psql -c \"ALTER USER ubuntu SUPERUSER CREATEDB;\""
+sudo -u postgres bash -c "psql -c \"CREATE DATABASE ubuntu;\""
 
 # install utilities
 apt-get install -y supervisor git libpq-dev unixodbc unixodbc-dev
@@ -26,3 +26,7 @@ apt-get install -y npm
 
 # install redis
 apt-get install -y redis-server
+
+# setup venv
+cd /apps/willo
+virtualenv venv --always-copy

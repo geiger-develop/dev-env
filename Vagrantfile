@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
 
   # Run boostrap script to do initial setup
   config.vm.provision :shell, path: "bootstrap.sh"
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
   # Example for VirtualBox:
   #
   config.vm.provider "virtualbox" do |vb|
-    vb.customize ["modifyvm", :id, "--cpus"  , "2"   ]
+    vb.customize ["modifyvm", :id, "--cpus"  , "2", "--memory", "2048"   ]
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
   #

@@ -15,18 +15,15 @@ sudo -u postgres bash -c "psql -c \"ALTER USER ubuntu SUPERUSER CREATEDB;\""
 sudo -u postgres bash -c "psql -c \"CREATE DATABASE ubuntu;\""
 
 # install utilities
-apt-get install -y supervisor git libpq-dev unixodbc unixodbc-dev
+sudo apt-get install -y supervisor git libpq-dev unixodbc unixodbc-dev
 
 # setup virtualenv
-apt-get install -y python-pip python-dev python-virtualenv celery
+sudo apt-get install -y python-pip python-dev python-virtualenv virtualenv
+sudo pip install celery
 
 # install node.js and npm
-apt-get install -y nodejs
-apt-get install -y npm
+sudo apt-get install -y nodejs
+sudo apt-get install -y npm
 
 # install redis
-apt-get install -y redis-server
-
-# setup venv
-cd /apps/willo
-virtualenv venv --always-copy
+sudo apt-get install -y redis-server
